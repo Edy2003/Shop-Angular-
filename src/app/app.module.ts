@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule }
-  from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,10 +11,7 @@ import { FormsModule } from '@angular/forms';
     MainComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MDBBootstrapModule.forRoot(),
-    FormsModule
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
