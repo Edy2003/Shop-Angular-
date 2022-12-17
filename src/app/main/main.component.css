@@ -1,0 +1,30 @@
+img{
+  width:80%;
+}
+p{
+  text-align: center;
+}
+a{
+  text-decoration: none!important;
+}
+.block{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.wrap{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  margin:2% 1% 2% 1%;
+  width:28%;
+  border:black solid 2px;
+}
+.image{
+  width:50%;
+  overflow: hidden;
+}
+

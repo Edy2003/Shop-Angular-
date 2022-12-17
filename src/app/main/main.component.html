@@ -1,4 +1,16 @@
-{{products}}
-<div *ngFor="let prod from products">
-{{prod}}
+<div class="block">
+  <div *ngFor="let product of products" class="wrap">
+    <p>{{product.title}}</p>
+    <div class="image">
+    <ng-image-slider [images]="imageObject" #nav></ng-image-slider>
+    </div>
+<!--    <img src="{{product.img[0]}}"/>-->
+<!--    <img src="{{product.img[1]}}"/>-->
+<!--    <img src="{{product.img[2]}}"/>-->
+    <p>{{product.price}}</p>
+    <p>{{product.memory}}</p>
+    <p>{{product.quantity}}</p>
+    <p>{{product.manufacturer}}</p>
+    <p>{{product.description}}</p>
+  </div>
 </div>
