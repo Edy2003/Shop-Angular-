@@ -24,12 +24,9 @@ export class MainComponent {
   initialize(): void {
     this.popArr = this.productsService.getPopArr();
   }
-  onClick(event:any){
-    let target = event.target || event.srcElement || event.currentTarget;
-    let Atr:Product = target.parentNode;
-    let idAtr = Atr;
-    this.popArr.push(Atr);
-    console.log(this.popArr);
+  onClick(product:Product){
+    this.popArr.push(product);
+    console.log(product);
   }
 
   ngOnInit(): void {

@@ -10,7 +10,7 @@ import {Observable, Subject} from "rxjs";
 
 export class ProductsService {
   private subject = new Subject<any>();
-  popArr:object[] = [];
+  popArr:any[] = [];
 
   constructor() { }
 
