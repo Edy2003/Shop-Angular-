@@ -1,5 +1,12 @@
+<div>
+  <button>Cart</button>
+  <div *ngFor="let atr of popArr" >
+        <div>{{atr.title}}</div>
+  </div>
+</div>
+
 <div class="block">
-  <div *ngFor="let product of products" class="wrap">
+  <div *ngFor="let product of products let i=index" [id]="i" class="wrap" >
     <p>{{product.title}}</p>
     <div class="image">
     <ng-image-slider [images]="imageObject" #nav></ng-image-slider>
@@ -7,10 +14,11 @@
 <!--    <img src="{{product.img[0]}}"/>-->
 <!--    <img src="{{product.img[1]}}"/>-->
 <!--    <img src="{{product.img[2]}}"/>-->
-    <p>{{product.price}}</p>
-    <p>{{product.memory}}</p>
-    <p>{{product.quantity}}</p>
-    <p>{{product.manufacturer}}</p>
+    <p>Price: {{product.price}}</p>
+    <p>Memory: {{product.memory}}</p>
+    <p>Quantity: {{product.quantity}}</p>
+    <p>Manufacturer: {{product.manufacturer}}</p>
     <p>{{product.description}}</p>
+    <button (click)="onClick($event)">Buy</button>
   </div>
 </div>

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, inject, OnInit} from '@angular/core';
 import {ProductsService} from "../products.service";
 import {Product} from "../product";
+import {Subscription} from "rxjs";
+
 
 @Component({
   selector: 'app-main',
@@ -8,7 +10,31 @@ import {Product} from "../product";
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
+  clickEventsubscription: Subscription
   products: Product[] | undefined;
+  popArr:any[];
+
+  constructor(private productsService:ProductsService) {
+    this.clickEventsubscription = this.productsService.getClickEvent().subscribe(() => {
+      this.initialize();
+    })
+    this.popArr = [];
+  }
+
+  initialize(): void {
+    this.popArr = this.productsService.getPopArr();
+  }
+  onClick(event:any){
+    let target = event.target || event.srcElement || event.currentTarget;
+    let Atr:Product = target.parentNode;
+    let idAtr = Atr;
+    this.popArr.push(Atr);
+    console.log(this.popArr);
+  }
+
+  ngOnInit(): void {
+    this.products = this.productsService.getProducts();
+  }
 
   imageObject: Array<object> = [{
     image: 'https://www.apple.com/v/macbook-pro-14-and-16/b/images/overview/hero/hero_intro_endframe__e6khcva4hkeq_large.jpg',
@@ -30,9 +56,4 @@ export class MainComponent {
       order: 1 //Optional: if you pass this key then slider images will be arrange according @input: slideOrderType
     }
   ];
-  constructor(private productsService:ProductsService) { }
-
-  ngOnInit(): void {
-    this.products = this.productsService.getProducts();
-  }
 }
