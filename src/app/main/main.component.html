@@ -1,19 +1,31 @@
-<div>
-  <button>Cart</button>
-  <div *ngFor="let atr of popArr" >
+
+<div class="popup" (click)="popupShow = !popupShow">Cart
+  <div id="myPopup" [ngClass]="{'show' : popupShow,'popuptext' : !popupShow}">
+    <div *ngFor="let atr of popArr" >
+      <div class="el">
         <div>{{atr.title}}</div>
+        <!--        <img src="{{atr.img[0]}}" alt="ma"/>-->
+        <p>Price: {{atr.price}}</p>
+        <p>Memory: {{atr.memory}}</p>
+        <p>Quantity: {{atr.quantity}}</p>
+        <p>Manufacturer: {{atr.manufacturer}}</p>
+      </div>
+    </div>
+    <div>Quantity:{{popArr.length}}</div>
+    <div>Price:{{summary}}</div>
   </div>
 </div>
+
 
 <div class="block">
   <div *ngFor="let product of products let i=index" [id]="i" class="wrap" >
     <p>{{product.title}}</p>
     <div class="image">
-    <ng-image-slider [images]="imageObject" #nav></ng-image-slider>
+      <ng-image-slider [images]="imageObject" #nav></ng-image-slider>
     </div>
-<!--    <img src="{{product.img[0]}}"/>-->
-<!--    <img src="{{product.img[1]}}"/>-->
-<!--    <img src="{{product.img[2]}}"/>-->
+    <!--    <img src="{{product.img[0]}}"/>-->
+    <!--    <img src="{{product.img[1]}}"/>-->
+    <!--    <img src="{{product.img[2]}}"/>-->
     <p>Price: {{product.price}}</p>
     <p>Memory: {{product.memory}}</p>
     <p>Quantity: {{product.quantity}}</p>

@@ -1,4 +1,4 @@
-import {Component, Inject, inject, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ProductsService} from "../products.service";
 import {Product} from "../product";
 import {Subscription} from "rxjs";
@@ -10,9 +10,11 @@ import {Subscription} from "rxjs";
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
-  clickEventsubscription: Subscription
+  clickEventsubscription: Subscription;
   products: Product[] | undefined;
-  popArr:any[];
+  popArr:Product[];
+  popupShow:boolean = false;
+  summary:number=0;
 
   constructor(private productsService:ProductsService) {
     this.clickEventsubscription = this.productsService.getClickEvent().subscribe(() => {
@@ -26,7 +28,9 @@ export class MainComponent {
   }
   onClick(product:Product){
     this.popArr.push(product);
-    console.log(product);
+    let sum = this.popArr.map(item=>{
+      return item.price });
+    this.summary = sum.reduce((acc, cur) => acc + cur, 0);
   }
 
   ngOnInit(): void {
